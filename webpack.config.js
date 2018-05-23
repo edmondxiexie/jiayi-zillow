@@ -25,13 +25,26 @@ module.exports = {
         test: /\.scss$/,
       },
       {
-        test: /\.(png|jpg|jpeg|gif)$/,
+        test: /\.(png|jpe?g|gif)$/,
         use: [
           {
             loader: 'file-loader',
             options: {}
           }
         ]
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 1000000
+            }
+          },
+          'image-webpack-loader'
+        ]
+
       }
     ]
   },

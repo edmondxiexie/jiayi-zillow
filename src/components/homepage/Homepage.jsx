@@ -4,7 +4,11 @@ import photo from "../../../img/photo.jpg";
 import photo2 from "../../../img/photo2.jpeg";
 import hodor from "../../../img/hodor.gif";
 
+import small from "../../../img/small_svg.svg";
+import big from "../../../img/big_svg.svg";
+
 class Homepage extends Component {
+
   render() {
     return (
       <div className="homepage-base">
@@ -24,6 +28,14 @@ class Homepage extends Component {
         <div>
           <h3>gif file</h3>
           <img src={hodor} className="img-base" />
+        </div>
+        <div>
+          <h3>Small svg file</h3>
+          <img src={small} className="img-base" />
+        </div>
+        <div>
+          <h3>Big svg file</h3>
+          <img src={big} className="img-base" />
         </div>
       </div>
       );

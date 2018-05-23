@@ -7,16 +7,15 @@ class PhotoGalleryCard extends Component {
   }
 
   render() {
-    const { url, caption } = this.props;
+    const { url, caption, onDeleteImage } = this.props;
 
     return (
       <div
         className="photo-gallery-card-base"
         onClick={e => {
-          console.log("Clicked");
+          onDeleteImage(e);
         }}
       >
-        <h1>Photo Gallery Card</h1>
         <div className="photo-gallery-card">
           <div className="card-caption">
             <div>{caption}</div>
@@ -30,7 +29,8 @@ class PhotoGalleryCard extends Component {
 
 PhotoGalleryCard.propTypes = {
   url: PropTypes.string.isRequired,
-  caption: PropTypes.string.isRequired
+  caption: PropTypes.string.isRequired,
+  onDeleteImage: PropTypes.func.isRequired
 };
 
 export default PhotoGalleryCard;

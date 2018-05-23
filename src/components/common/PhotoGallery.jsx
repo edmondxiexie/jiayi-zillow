@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PhotoGalleryCard from "./PhotoGalleryCard";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Button, ButtonGroup } from "react-bootstrap";
 import ReactSwipe from "react-swipe";
+import PropTypes from "prop-types";
 
 class PhotoGallery extends Component {
   constructor(props) {
@@ -58,13 +58,11 @@ class PhotoGallery extends Component {
         this.setState({
           sliding: true
         });
-        console.log("slide changed");
       },
       transitionEnd: () => {
         this.setState({
           sliding: false
         });
-        console.log("ended transition");
       }
     };
 
@@ -102,5 +100,9 @@ class PhotoGallery extends Component {
     );
   }
 }
+
+PhotoGallery.propTypes = {
+  images: PropTypes.array.isRequired
+};
 
 export default PhotoGallery;

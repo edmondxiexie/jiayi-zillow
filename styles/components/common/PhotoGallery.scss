@@ -1,13 +1,27 @@
+.photo-gallery-base {
+  .photo-gallery {
+    margin: 10px 0px 20px 0px;
+  }
+
+  .button-group {
+    justify-content: center;
+    display: flex;
+  }
+}
+
 .fade-enter {
   opacity: 0.01;
 }
+
 .fade-enter-active {
   opacity: 1;
   transition: opacity 500ms ease-in;
 }
+
 .fade-exit {
   opacity: 1;
 }
+
 .fade-exit-active {
   opacity: 0.01;
   transition: opacity 500ms ease-in;

@@ -1,4 +1,17 @@
 .homepage-base {
+  h1 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .image-loader-test {
+    margin-top: 60px;
+
+    h2 {
+      text-align: center;
+    }
+  }
+
   img.img-base {
     width: 300px;
     height: 300px;

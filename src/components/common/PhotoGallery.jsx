@@ -1,27 +1,16 @@
 import React, { Component } from "react";
 import PhotoGalleryCard from "./PhotoGalleryCard";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { Button } from "react-bootstrap";
+import { Button, ButtonGroup } from "react-bootstrap";
+import ReactSwipe from "react-swipe";
 
 class PhotoGallery extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      images: this.props.images.slice()
+      images: this.props.images.slice(),
+      sliding: false
     };
-  }
-
-  handleRemoveImage(id) {
-    const { images } = this.state;
-    this.setState({
-      images: images.filter(image => image.id !== id)
-    });
-  }
-
-  handleRecoverImages() {
-    this.setState({
-      images: this.props.images.slice()
-    });
   }
 
   buildGallery(images) {
@@ -30,37 +19,84 @@ class PhotoGallery extends Component {
       let { id, url, caption } = image;
 
       gallery.push(
-        <CSSTransition key={url} timeout={500} classNames="fade">
-          <div className="col-md-4">
-            <PhotoGalleryCard
-              url={url}
-              caption={caption}
-              onDeleteImage={() => {
-                this.handleRemoveImage(id);
-              }}
-            />
-          </div>
-        </CSSTransition>
+        <div key={id}>
+          <PhotoGalleryCard
+            url={url}
+            caption={caption}
+            onClickNext={() => {
+              this.next();
+            }}
+            onClickPrev={() => {
+              this.prev();
+            }}
+            sliding={this.state.sliding}
+          />
+        </div>
       );
     }
     return gallery;
   }
 
+  next() {
+    this.reactSwipe.next();
+  }
+
+  prev() {
+    this.reactSwipe.prev();
+  }
+
   render() {
-    const { images } = this.state;
+    const { images, current } = this.state;
+
+    const swipeOptions = {
+      startSlide: 0,
+      auto: 0,
+      speed: 300,
+      disableScroll: false,
+      continuous: true,
+      callback: () => {
+        this.setState({
+          sliding: true
+        });
+        console.log("slide changed");
+      },
+      transitionEnd: () => {
+        this.setState({
+          sliding: false
+        });
+        console.log("ended transition");
+      }
+    };
 
     return (
       <div className="photo-gallery-base">
-        <Button
-          bsStyle="primary"
-          onClick={() => {
-            this.handleRecoverImages();
-          }}
+        <ReactSwipe
+          ref={reactSwipe => (this.reactSwipe = reactSwipe)}
+          className="photo-gallery"
+          swipeOptions={swipeOptions}
         >
-          Recover all images
-        </Button>
-        <div className="row">
-          <TransitionGroup>{this.buildGallery(images)}</TransitionGroup>
+          {this.buildGallery(images)}
+        </ReactSwipe>
+
+        <div className="button-group">
+          <ButtonGroup>
+            <Button
+              bsStyle="primary"
+              onClick={() => {
+                this.prev();
+              }}
+            >
+              Prev
+            </Button>
+            <Button
+              bsStyle="primary"
+              onClick={() => {
+                this.next();
+              }}
+            >
+              Next
+            </Button>
+          </ButtonGroup>
         </div>
       </div>
     );

@@ -14,8 +14,8 @@ module.exports = {
   module: {
     rules: [
       {
-        use: "babel-loader",
         test: /\.jsx?$/,
+        use: "babel-loader",
         exclude: /node_modules/,
       },
       {
@@ -23,6 +23,15 @@ module.exports = {
           loader: ['css-loader', 'sass-loader']
         }),
         test: /\.scss$/,
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {}
+          }
+        ]
       }
     ]
   },

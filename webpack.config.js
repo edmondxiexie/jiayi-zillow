@@ -1,12 +1,15 @@
 var webpack = require("webpack");
 var path = require("path");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: {
+    bundle: "./src/index.js"
+  },
   output: {
     path: path.resolve(__dirname, "build"),
-    filename: "bundle.[chunkhash].js"
+    filename: "[name].[chunkhash].js"
   },
   module: {
     rules: [
@@ -16,18 +19,23 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        use: ['style-loader', 'css-loader'],
-        test: /\.css$/,
-      },
-      {
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        loader: ExtractTextPlugin.extract({
+          loader: ['css-loader', 'sass-loader']
+        }),
         test: /\.scss$/,
       }
     ]
   },
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      names: "bundle"
+    }),
     new HtmlWebpackPlugin({
       template: "index.html"
+    }),
+    new ExtractTextPlugin({
+      filename: 'style.[contenthash].css',
+      allChunks: true
     })
   ],
   resolve: {

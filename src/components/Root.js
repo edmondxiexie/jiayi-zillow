@@ -6,7 +6,7 @@ class Root extends Component {
       <div className="root">
         <div className="root-container">{this.props.children}</div>
       </div>
-      );
+    );
   }
 }
 

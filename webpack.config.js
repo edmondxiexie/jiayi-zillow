@@ -1,7 +1,7 @@
 var webpack = require("webpack");
 var path = require("path");
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var HtmlWebpackPlugin = require("html-webpack-plugin");
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   entry: {
@@ -16,19 +16,19 @@ module.exports = {
       {
         test: /\.jsx?$/,
         use: "babel-loader",
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
       {
         loader: ExtractTextPlugin.extract({
-          loader: ['css-loader', 'sass-loader']
+          loader: ["css-loader", "sass-loader"]
         }),
-        test: /\.scss$/,
+        test: /\.scss$/
       },
       {
         test: /\.(png|jpe?g|gif)$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
             options: {}
           }
         ]
@@ -37,14 +37,13 @@ module.exports = {
         test: /\.svg$/,
         use: [
           {
-            loader: 'url-loader',
+            loader: "url-loader",
             options: {
               limit: 1000000
             }
           },
-          'image-webpack-loader'
+          "image-webpack-loader"
         ]
-
       }
     ]
   },
@@ -56,11 +55,14 @@ module.exports = {
       template: "index.html"
     }),
     new ExtractTextPlugin({
-      filename: 'style.[contenthash].css',
+      filename: "style.[contenthash].css",
       allChunks: true
+    }),
+    new webpack.DefinePlugin({
+      "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)
     })
   ],
   resolve: {
-    extensions: ['.js', '.jsx', '.css', '.scss'],
-  },
+    extensions: [".js", ".jsx", ".css", ".scss"]
+  }
 };

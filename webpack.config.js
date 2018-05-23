@@ -13,7 +13,7 @@ module.exports = {
       {
         use: "babel-loader",
         test: /\.jsx?$/,
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         use: ['style-loader', 'css-loader'],
@@ -29,5 +29,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "index.html"
     })
-  ]
+  ],
+  resolve: {
+    extensions: ['.js', '.jsx', '.css', '.scss'],
+  },
 };

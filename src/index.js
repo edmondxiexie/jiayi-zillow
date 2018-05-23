@@ -1,9 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import Routes from "./routes/routes";
+import "../styles/main.scss";
 
 const App = () => {
   return (
-    <div>Hello World!!!!</div>
+    <Routes />
     );
 };
 

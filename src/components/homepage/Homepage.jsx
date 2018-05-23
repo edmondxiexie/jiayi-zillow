@@ -81,27 +81,27 @@ class Homepage extends Component {
             <h2>Image Loader Test</h2>
 
             <div className="row">
-              <div>
+              <div className="col-md-6">
                 <h3>png file</h3>
                 <img src={avatar} className="img-base" />
               </div>
-              <div>
+              <div className="col-md-6">
                 <h3>jpg file</h3>
                 <img src={photo} className="img-base" />
               </div>
-              <div>
+              <div className="col-md-6">
                 <h3>jpeg file</h3>
                 <img src={photo2} className="img-base" />
               </div>
-              <div>
+              <div className="col-md-6">
                 <h3>gif file</h3>
                 <img src={hodor} className="img-base" />
               </div>
-              <div>
+              <div className="col-md-6">
                 <h3>Small svg file</h3>
                 <img src={small} className="img-base" />
               </div>
-              <div>
+              <div className="col-md-6">
                 <h3>Big svg file</h3>
                 <img src={big} className="img-base" />
               </div>

@@ -18,8 +18,8 @@ class Homepage extends Component {
       {
         id: 1,
         url:
-          "http://res.cloudinary.com/dqace5qmb/image/upload/v1522112935/8965577171_719591ff4d_z.jpg",
-        caption: "Grand and Cozy 1920's SF Studio"
+          "https://res.cloudinary.com/dqace5qmb/image/upload/v1524280655/un5rgxwnlplqw6naulmx.jpg",
+        caption: "Upscale Private Ensuite Bed & Bath"
       },
       {
         id: 2,
@@ -60,8 +60,8 @@ class Homepage extends Component {
       {
         id: 8,
         url:
-          "https://res.cloudinary.com/dqace5qmb/image/upload/v1524280655/un5rgxwnlplqw6naulmx.jpg",
-        caption: "Upscale Private Ensuite Bed & Bath"
+          "http://res.cloudinary.com/dqace5qmb/image/upload/v1522112935/8965577171_719591ff4d_z.jpg",
+        caption: "Grand and Cozy 1920's SF Studio"
       },
       {
         id: 9,
